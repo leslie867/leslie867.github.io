@@ -3,15 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>小苏的邀请</title>
+  <title>感谢249局</title>
   <style>
-    /* 页面样式 */
-    body {
-      margin: 0;
-      padding: 0;
-      background: transparent; /* 背景透明 */
-    }
-
     /* 弹窗样式 */
     .modal {
       display: none;
@@ -45,26 +38,113 @@
       background-color: #f44336;
       color: white;
     }
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
-  <!-- 弹窗结构 -->
+  <!-- 第一个弹窗 -->
   <div id="firstModal" class="modal">
     <div class="modal-content">
-      <p>是否接受小苏的感谢局，249局，滑雪局？</p >
+      <p>尝试一下雪上滑行？</p>
       <div class="modal-buttons">
-        <button class="yes" onclick="handleFirstDialog(true)">是</button>
-        <button class="no" onclick="handleFirstDialog(false)">否</button>
+        <button class="yes" onclick="handleFirstDialog(true)">A. 可以一试</button>
+        <button class="no" onclick="handleFirstDialog(false)">B. 不可一试</button>
       </div>
     </div>
   </div>
 
+  <!-- 第二个弹窗（选择日期） -->
   <div id="secondModal" class="modal">
     <div class="modal-content">
-      <p>Why refuse？</p >
+      <p>感谢支持！当然，就不称它为感谢局，249局了，作为受到儒家文化熏陶的牛马，此事终于要了了，那么陶总打算什么时候行动？</p>
+      <img src="<img src=<a href="https://imgur.la/image/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE-20250214174810.5twu3"><img src="https://imgur.la/images/2025/02/14/_20250214174810b737246dab1c7098.jpeg" alt="微信截图 20250214174810" border="0"></a>>>
       <div class="modal-buttons">
-        <button class="yes" onclick="handleSecondDialog(true)">故意点错了</button>
-        <button class="no" onclick="handleSecondDialog(false)">不小心点错了</button>
+        <button onclick="handleDateSelection('2.15')">A. 2.15</button>
+        <button onclick="handleDateSelection('2.16')">B. 2.16</button>
+        <button onclick="handleDateSelection('2.22')">C. 2.22</button>
+        <button onclick="handleDateSelection('2.23')">D. 2.23</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第三个弹窗（明天下雨） -->
+  <div id="thirdModal" class="modal">
+    <div class="modal-content">
+      <p>明天下雨，确定吗？</p>
+      <div class="modal-buttons">
+        <button class="yes" onclick="handleRainConfirmation(true)">A. 确定</button>
+        <button class="no" onclick="handleRainConfirmation(false)">B. 不确定</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第四个弹窗（能力有限） -->
+  <div id="fourthModal" class="modal">
+    <div class="modal-content">
+      <p>鄙人能力有限，麻烦给我发一下吧。</p>
+      <img src="https://via.placeholder.com/300x150" alt="能力有限图片">
+      <button onclick="closeFourthModal()">确定</button>
+    </div>
+  </div>
+
+  <!-- 第五个弹窗（明天上班） -->
+  <div id="fifthModal" class="modal">
+    <div class="modal-content">
+      <p>明天上班，确定吗？</p>
+      <div class="modal-buttons">
+        <button class="yes" onclick="handleWorkConfirmation(true)">A. 确定</button>
+        <button class="no" onclick="handleWorkConfirmation(false)">B. 不确定</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第六个弹窗（儒家文化） -->
+  <div id="sixthModal" class="modal">
+    <div class="modal-content">
+      <p>作为受到儒家文化熏陶的纯牛马，得人恩果千年记是鄙人从小受到的教育。</p>
+      <div class="modal-buttons">
+        <button class="yes" onclick="handleConfucianChoice(true)">A. 不小心点错了</button>
+        <button class="no" onclick="handleConfucianChoice(false)">B. 故意点错了</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第七个弹窗（为什么故意点错了） -->
+  <div id="seventhModal" class="modal">
+    <div class="modal-content">
+      <p>为什么故意点错了？</p>
+      <img src="<a href="https://imgur.la/image/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE-20250214174757.5txLO"><img src="https://imgur.la/images/2025/02/14/_2025021417475799e8c06c077d25f7.jpeg" alt="微信截图 20250214174757" border="0"></a>">
+      <div class="modal-buttons">
+        <button class="yes" onclick="handleIntentionalChoice(true)">A. 想看一下会出现什么</button>
+        <button class="no" onclick="handleIntentionalChoice(false)">B. 哎就是玩儿</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第八个弹窗（别看了） -->
+  <div id="eighthModal" class="modal">
+    <div class="modal-content">
+      <p>别看了！鄙人能力有限。</p>
+      <img src="<a href="https://imgur.la/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87-20250214175909.5t8b2"><img src="https://imgur.la/images/2025/02/14/_20250214175909.jpg" alt="微信图片 20250214175909" border="0"></a>">
+      <div class="modal-buttons">
+        <button onclick="closeEighthModal()">A. 好的</button>
+        <button onclick="closeEighthModal()">B. 女子白勺</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第九个弹窗（别玩啦） -->
+  <div id="ninthModal" class="modal">
+    <div class="modal-content">
+      <p>别玩啦！此事不了，鄙人难以入睡。</p>
+      <img src="<a href="https://imgur.la/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87-20250214180420.5tUtf"><img src="https://imgur.la/images/2025/02/14/_20250214180420.jpg" alt="微信图片 20250214180420" border="0"></a>">
+      <div class="modal-buttons">
+        <button onclick="closeNinthModal()">A. 好</button>
+        <button onclick="closeNinthModal()">B. 好好好</button>
       </div>
     </div>
   </div>
@@ -78,29 +158,142 @@
     // 处理第一个弹窗的选择
     function handleFirstDialog(isYes) {
       if (isYes) {
-        alert('您选择了“是”，感谢参与！');
         closeAllModals();
+        showSecondDialog();
+      } else {
+        closeAllModals();
+        showSixthDialog();
+      }
+    }
+
+    // 显示第二个弹窗（选择日期）
+    function showSecondDialog() {
+      document.getElementById('secondModal').style.display = 'flex';
+    }
+
+    // 处理日期选择
+    function handleDateSelection(date) {
+      closeAllModals();
+      if (date === '2.15') {
+        showThirdDialog();
+      } else if (date === '2.16') {
+        showFifthDialog();
+      } else if (date === '2.22') {
+        showFourthDialog();
+      } else if (date === '2.23') {
+        showFifthDialog();
+      }
+    }
+
+    // 显示第三个弹窗（明天下雨）
+    function showThirdDialog() {
+      document.getElementById('thirdModal').style.display = 'flex';
+    }
+
+    // 处理明天下雨的选择
+    function handleRainConfirmation(isYes) {
+      if (isYes) {
+        closeAllModals();
+        showFourthDialog();
       } else {
         closeAllModals();
         showSecondDialog();
       }
     }
 
-    // 显示第二个弹窗
-    function showSecondDialog() {
-      document.getElementById('secondModal').style.display = 'flex';
+    // 显示第四个弹窗（能力有限）
+    function showFourthDialog() {
+      document.getElementById('fourthModal').style.display = 'flex';
     }
 
-    // 处理第二个弹窗的选择
-    function handleSecondDialog() {
+    // 关闭第四个弹窗
+    function closeFourthModal() {
       closeAllModals();
-      showFirstDialog(); // 返回第一个弹窗
+    }
+
+    // 显示第五个弹窗（明天上班）
+    function showFifthDialog() {
+      document.getElementById('fifthModal').style.display = 'flex';
+    }
+
+    // 处理明天上班的选择
+    function handleWorkConfirmation(isYes) {
+      if (isYes) {
+        closeAllModals();
+        showFourthDialog();
+      } else {
+        closeAllModals();
+        showSecondDialog();
+      }
+    }
+
+    // 显示第六个弹窗（儒家文化）
+    function showSixthDialog() {
+      document.getElementById('sixthModal').style.display = 'flex';
+    }
+
+    // 处理儒家文化的选择
+    function handleConfucianChoice(isAccidental) {
+      if (isAccidental) {
+        closeAllModals();
+        setTimeout(() => {
+          showSecondDialog();
+        }, 2000); // 2 秒后显示第二个弹窗
+      } else {
+        closeAllModals();
+        showSeventhDialog();
+      }
+    }
+
+    // 显示第七个弹窗（为什么故意点错了）
+    function showSeventhDialog() {
+      document.getElementById('seventhModal').style.display = 'flex';
+    }
+
+    // 处理故意点错了的选择
+    function handleIntentionalChoice(isCurious) {
+      if (isCurious) {
+        closeAllModals();
+        showEighthDialog();
+      } else {
+        closeAllModals();
+        showNinthDialog();
+      }
+    }
+
+    // 显示第八个弹窗（别看了）
+    function showEighthDialog() {
+      document.getElementById('eighthModal').style.display = 'flex';
+    }
+
+    // 关闭第八个弹窗
+    function closeEighthModal() {
+      closeAllModals();
+      showSecondDialog();
+    }
+
+    // 显示第九个弹窗（别玩啦）
+    function showNinthDialog() {
+      document.getElementById('ninthModal').style.display = 'flex';
+    }
+
+    // 关闭第九个弹窗
+    function closeNinthModal() {
+      closeAllModals();
+      showSecondDialog();
     }
 
     // 关闭所有弹窗
     function closeAllModals() {
       document.getElementById('firstModal').style.display = 'none';
       document.getElementById('secondModal').style.display = 'none';
+      document.getElementById('thirdModal').style.display = 'none';
+      document.getElementById('fourthModal').style.display = 'none';
+      document.getElementById('fifthModal').style.display = 'none';
+      document.getElementById('sixthModal').style.display = 'none';
+      document.getElementById('seventhModal').style.display = 'none';
+      document.getElementById('eighthModal').style.display = 'none';
+      document.getElementById('ninthModal').style.display = 'none';
     }
 
     // 页面加载时显示第一个弹窗
